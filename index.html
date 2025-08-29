@@ -623,6 +623,51 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika membe
 
 </main>
 
+<!-- PENAMBAHAN KODE UNTUK ANIMASI SAKURA -->
+<script>
+    // Fungsi ini membuat satu kelopak bunga sakura
+    function createSakuraPetal() {
+        const sakuraContainer = document.getElementById('sakura-container');
+        const petal = document.createElement('div');
+        petal.classList.add('sakura-petal');
+
+        // Mengatur properti acak untuk setiap kelopak
+        const size = Math.random() * 15 + 10; // Ukuran antara 10px dan 25px
+        const startPosition = Math.random() * window.innerWidth; // Posisi horizontal awal
+        const fallDuration = Math.random() * 5 + 7; // Durasi jatuh antara 7s dan 12s
+        const fallDelay = Math.random() * 5; // Penundaan sebelum jatuh
+        const windEffect = (Math.random() - 0.5) * 200; // Efek angin ke kiri atau kanan
+
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size}px`;
+        petal.style.left = `${startPosition}px`;
+        petal.style.animationDuration = `${fallDuration}s`;
+        petal.style.animationDelay = `${fallDelay}s`;
+        petal.style.setProperty('--wind-effect', `${windEffect}px`);
+
+        sakuraContainer.appendChild(petal);
+
+        // Hapus elemen setelah animasi selesai untuk menjaga performa
+        setTimeout(() => {
+            petal.remove();
+        }, (fallDuration + fallDelay) * 1000);
+    }
+
+    // Panggil fungsi untuk membuat kelopak baru secara berkala
+    // Angka 300 berarti membuat 1 kelopak baru setiap 300 milidetik
+    let sakuraInterval;
+
+    function startSakuraAnimation() {
+        if (!sakuraInterval) {
+            sakuraInterval = setInterval(createSakuraPetal, 300);
+        }
+    }
+    
+    // Panggil saat halaman dimuat
+    startSakuraAnimation();
+</script>
+<!-- AKHIR PENAMBAHAN KODE UNTUK ANIMASI SAKURA -->
+   
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
