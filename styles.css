@@ -1,0 +1,56 @@
+/* Basic fonts */
+body { font-family: 'Lora', serif; }
+
+/* Utility font for script headings */
+.font-script { font-family: 'Playfair Display', serif; }
+
+/* Colors / buttons */
+.btn-custom {
+  background-color: #075985;
+  color: #fff;
+  transition: background-color .25s;
+}
+.btn-custom:hover { background-color: #0369A1; }
+
+/* Section backgrounds (full-bleed) */
+.section-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Put the same image URLs you used before */
+.bg-hero { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); }
+.bg-details { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
+.bg-story { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg1.png'); }
+.bg-gift { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg3.png'); }
+.bg-guestbook { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
+
+/* Fix: ensure no horizontal overflow */
+html, body { overflow-x: hidden; }
+
+/* Play overlay transition */
+#playOverlay { transition: opacity 500ms ease, visibility 500ms; }
+#playOverlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Sakura petal animation */
+#sakura-container { z-index: 30; pointer-events: none; overflow: hidden; position: fixed; inset: 0; }
+.sakura-petal {
+  position: absolute;
+  top: -50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 18px; height: 18px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) translateX(var(--wind-effect, 0px)) rotate(360deg); opacity: 0; }
+}
+
+/* Lantern float */
+@keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(8px)} }
+.lantern { animation: float 4s ease-in-out infinite; }
+
+/* small helpers */
+.font-heading { font-family: 'Playfair Display', serif; }
