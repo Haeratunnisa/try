@@ -182,143 +182,107 @@
    backdrop-blur-md bg-gradient-to-b from-sky-200/60 via-blue-300/50 to-rose-200/40 
    z-[9999] text-center text-white p-4">
 
-    <div class="bg-white/60 backdrop-blur-md p-8 rounded-2xl shadow-xl">
+    <div class="bg-white/60 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-md w-full">
         <p class="text-lg md:text-xl text-sky-900">The Wedding Of</p>
-        <h1 class="font-heading text-5xl md:text-7xl text-sky-800 my-4">Rama & Miftah</h1>
+        <h1 class="font-script text-5xl md:text-7xl text-sky-800 my-4">Rama & Miftah</h1>
         <p class="text-md text-sky-700 mt-8">Kepada Yth. Bapak/Ibu/Saudara/i</p>
         <p id="guest-name" class="text-xl font-bold text-sky-900 mt-2">Tamu Undangan</p>
-        <button id="playButton" 
-            class="mt-6 py-3 px-6 text-lg rounded-full 
-                            bg-sky-400/30 text-white 
-                            border border-sky-200 
-                            hover:bg-sky-400/50 
-                            transition-all duration-300 
-                            shadow-lg fade-in-up overlay-button">
-                💌 Buka Undangan 💌
+        <button id="playButton" class="mt-6 py-3 px-6 text-lg rounded-full bg-sky-800 text-white hover:bg-sky-900 transition-all duration-300 shadow-lg fade-in-up">
+            💌 Buka Undangan 💌
         </button>
     </div>
-</div> 
+</div>
 
-<!-- Main Content -->
-<main id="main-content">
+<!-- Main Content Wrapper -->
+<!-- FIX: Menggunakan satu wrapper utama dengan kelas .main-background untuk latar belakang yang konsisten -->
+<div class="main-background">
+<main id="main-content" class="content-wrapper">
 
-<!-- Music Control Button -->
-<button id="musicControl" class="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm text-white flex items-center justify-center shadow-lg">
-<i id="musicIcon" class="fas fa-pause"></i>
-</button>
+    <!-- Music Control Button -->
+    <button id="musicControl" class="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm text-white flex items-center justify-center shadow-lg">
+        <i id="musicIcon" class="fas fa-pause"></i>
+    </button>
 
-<!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden px-4"><!-- Background -->
-        <div class="absolute inset-0 bg-cover bg-center" 
-        style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
-                       filter: brightness(0.6);">
+    <!-- Hero Section -->
+    <!-- FIX: Mengganti h-screen dengan min-h-screen untuk fleksibilitas di mobile -->
+    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden px-4">
+        <!-- FIX: Card dibuat lebih dinamis dengan padding di parent section -->
+        <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 md:p-12 max-w-5xl w-full mx-auto space-y-4 md:space-y-6" data-aos="fade-up">
+            <div class="mb-4">
+                <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" alt="Kaligrafi" class="mx-auto w-40 md:w-56">
+            </div>
+            <div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-4 border-4 border-white/40 rounded-xl overflow-hidden shadow-lg">
+                <img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" alt="Foto Mempelai" class="w-full h-full object-cover"> <!-- Frame Foto -->
+            </div>
+            <h1 class="font-script text-3xl md:text-4xl text-white">Rama & Miftah</h1>
+            <p class="text-sm md:text-base text-gray-100">
+                Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)
+            </p>
+            <p class="italic text-gray-200">InsyaAllah</p>
+            <div class="mt-4 flex flex-col items-center">
+                <div class="flex items-center gap-4 md:gap-6">
+                    <span class="text-sm md:text-base font-medium">Kamis</span>
+                    <div class="flex items-center">
+                        <div class="w-px h-12 bg-white/70"></div>
+                        <div class="px-4 text-5xl md:text-7xl font-bold">04</div>
+                        <div class="w-px h-12 bg-white/70"></div>
+                    </div>
+                    <span class="text-sm md:text-base font-medium">2025</span>
+                </div>
+                <p class="mt-2 text-lg md:text-xl font-semibold">September</p>
+            </div>
+            <div class="mt-6">
+                <p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
+                <div id="countdown" class="flex justify-center space-x-4 md:space-x-10 text-base md:text-lg">
+                    <div><span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span><span>Hari</span></div>
+                    <div><span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span><span>Jam</span></div>
+                    <div><span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span><span>Menit</span></div>
+                    <div><span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span><span>Detik</span></div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Glassmorphism Card -->
-        <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
-        
-        <!-- Kaligrafi Jepang + Cina -->
-        <div class="mb-4">
-        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" 
-        alt="Kaligrafi Jepang Cina" 
-        class="mx-auto w-40 md:w-56">
-        </div>
-
-<!-- Frame Foto -->
-<div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-4 border-4 border-white/40 rounded-xl overflow-hidden shadow-lg">
-<img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" 
-alt="Foto Mempelai" 
-class="w-full h-full object-cover">
-</div>
-
-<!-- Nama Mempelai -->
-<h1 class="font-script text-3xl md:text-4xl text-white">Rama & Miftah</h1>
-
-<!-- Deskripsi Acara -->
-<p class="text-sm md:text-base text-gray-100">
-Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)
-</p>
-<p class="italic text-gray-200">InsyaAllah</p>
-
-<!-- Tanggal -->
-<div class="mt-4 flex flex-col items-center">
-<div class="flex items-center gap-6">
-<span class="text-sm md:text-base font-medium">Kamis</span>
-
-<!-- Angka dengan garis vertikal -->
-<div class="flex items-center">
-<div class="w-px h-12 bg-white/70"></div>
-<div class="px-4 text-5xl md:text-7xl font-bold">04</div>
-<div class="w-px h-12 bg-white/70"></div>
-</div>
-
-<span class="text-sm md:text-base font-medium">2025</span>
-</div>
-<p class="mt-2 text-lg md:text-xl font-semibold">September</p>
-</div>
-
-<!-- Countdown -->
-<div class="mt-6">
-<p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
-<div id="countdown" class="flex justify-center space-x-6 md:space-x-10 mt-6 text-base md:text-lg">
-<div>
-<span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span>
-<span>Hari</span>
-</div>
-<div>
-<span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span>
-<span>Jam</span>
-</div>
-<div>
-<span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span>
-<span>Menit</span>
-</div>
-<div>
-<span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span>
-<span>Detik</span>
-</div>
-</div>
-</div>
-</section>
-
+<!-- Couple Section -->
 <section id="couple" class="relative min-h-screen flex flex-col items-center justify-center text-white text-center py-20 px-4">
-        <div data-aos="zoom-in" data-aos-duration="1200">
-        	<div class="relative text-white min-h-screen 
+    <div data-aos="zoom-in" data-aos-duration="1200">
+        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" alt="Basmallah" class="mx-auto w-60">
+        <!--<div class="relative text-white min-h-screen 
             bg-[url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png')] 
             bg-cover bg-center">
 
-<!-- Overlay Transparan -->
-<div class="absolute inset-0 bg-black/60"></div>
-<!-- Ornamen Lampion (paling atas) -->
-<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-150">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-300">
-</div>
+        <!-- Overlay Transparan -->
+        <div class="absolute inset-0 bg-black/60"></div>
+        <!-- Ornamen Lampion (paling atas) -->
+        <div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+        alt="lampion" class="w-12 h-12 lantern">
+        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+        alt="lampion" class="w-12 h-12 lantern delay-150">
+        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+        alt="lampion" class="w-12 h-12 lantern delay-300">
+        </div>
 
-<!-- Kaligrafi Basmalah -->
-<div data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bismillah.png" 
-alt="Basmallah" class="mx-auto w-60">
-</div>
+        <!-- Kaligrafi Basmalah -->
+    <div data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
+        <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bismillah.png" 
+        alt="Basmallah" class="mx-auto w-60">
+    </div>
 
-<!-- Salam & Ayat -->
-<div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-<div class="text-center mt-6 px-6 max-w-2xl mx-auto">
-<h2 class="font-semibold text-lg italic">Assalamualaikum Wr.Wb.</h2>
-<p class="mt-2 text-sm">Segala Puji hanya Milik Allah عَزَّ وَجَلَّ</p>
+    <!-- Salam & Ayat -->
+    <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+    <div class="text-center mt-6 px-6 max-w-2xl mx-auto">
+    <h2 class="font-semibold text-lg italic">Assalamualaikum Wr.Wb.</h2>
+    <p class="mt-2 text-sm">Segala Puji hanya Milik Allah عَزَّ وَجَلَّ</p>
+    
+    <p class="mt-4 leading-relaxed text-sm italic">
+    وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+    </p>
 
-<p class="mt-4 leading-relaxed text-sm italic">
-وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
-</p>
-
-<p class="mt-4 text-sm italic">
-"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-<br><span class="font-semibold">(QS. Ar-Rum: 21)</span>
-</p>
+    <p class="mt-4 text-sm italic">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+    <br><span class="font-semibold">(QS. Ar-Rum: 21)</span>
+    </p>
 
 <p class="mt-4">Dengan Mengharap Ridho-Nya, Kami...</p>
 </div>
