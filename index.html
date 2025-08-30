@@ -2,8 +2,7 @@
 <html lang="id" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Wedding of Rama & Miftah</title>
 
 <!-- Tailwind CSS -->
@@ -157,84 +156,79 @@ class="mt-6 py-3 px-6 text-lg rounded-full
 <i id="musicIcon" class="fas fa-pause"></i>
 </button>
 
-<body class="overflow-x-hidden">
-   
 <!-- Hero Section -->
-<section id="hero" class="relative min-h-screen flex flex-col items-center text-white text-center overflow-hidden px-4 sm:px-6 lg:px-8 py-12">
+<section id="hero" class="relative h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden">
+<!-- Background -->
+<div class="absolute inset-0 bg-cover bg-center" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
+               filter: brightness(0.6);">
+</div>
 
-   <!-- Background -->
-  <div class="absolute inset-0 bg-cover bg-center" 
-    style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
-           filter: brightness(0.6);">
-  </div>
+<!-- Glassmorphism Card -->
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
 
-  <!-- Glassmorphism Card -->
-  <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 max-w-5xl w-full mx-auto space-y-6" data-aos="fade-up">
+<!-- Kaligrafi Jepang + Cina -->
+<div class="mb-4">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" 
+alt="Kaligrafi Jepang Cina" 
+class="mx-auto w-40 md:w-56">
+</div>
 
-    <!-- Kaligrafi Jepang + Cina -->
-    <div class="mb-4">
-      <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" 
-           alt="Kaligrafi Jepang dan Cina" 
-           class="mx-auto w-32 sm:w-40 md:w-56">
-    </div>
+<!-- Frame Foto -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-4 border-4 border-white/40 rounded-xl overflow-hidden shadow-lg">
+<img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" 
+alt="Foto Mempelai" 
+class="w-full h-full object-cover">
+</div>
 
-    <!-- Frame Foto -->
-    <div class="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 mx-auto mb-4 border-4 border-white/40 rounded-xl overflow-hidden shadow-lg">
-      <img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" 
-           alt="Foto Mempelai Rama & Miftah" 
-           class="w-full h-full object-cover">
-    </div>
+<!-- Nama Mempelai -->
+<h1 class="font-script text-3xl md:text-4xl text-white">Rama & Miftah</h1>
 
-    <!-- Nama Mempelai -->
-    <h1 class="font-script text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white">Rama & Miftah</h1>
+<!-- Deskripsi Acara -->
+<p class="text-sm md:text-base text-gray-100">
+Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)
+</p>
+<p class="italic text-gray-200">InsyaAllah</p>
 
-    <!-- Deskripsi Acara -->
-    <p class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-100">
-      Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)
-    </p>
-    <p class="italic text-gray-200 text-sm md:text-base">InsyaAllah</p>
+<!-- Tanggal -->
+<div class="mt-4 flex flex-col items-center">
+<div class="flex items-center gap-6">
+<span class="text-sm md:text-base font-medium">Kamis</span>
 
-    <!-- Tanggal -->
-    <div class="mt-4 flex flex-col items-center">
-      <div class="flex items-center gap-4 sm:gap-6">
-        <span class="text-xs sm:text-sm md:text-base font-medium">Kamis</span>
+<!-- Angka dengan garis vertikal -->
+<div class="flex items-center">
+<div class="w-px h-12 bg-white/70"></div>
+<div class="px-4 text-5xl md:text-7xl font-bold">04</div>
+<div class="w-px h-12 bg-white/70"></div>
+</div>
 
-        <!-- Angka dengan garis vertikal -->
-        <div class="flex items-center">
-          <div class="w-px h-8 sm:h-12 bg-white/70"></div>
-          <div class="px-2 sm:px-4 text-4xl sm:text-5xl md:text-7xl font-bold">04</div>
-          <div class="w-px h-8 sm:h-12 bg-white/70"></div>
-        </div>
+<span class="text-sm md:text-base font-medium">2025</span>
+</div>
+<p class="mt-2 text-lg md:text-xl font-semibold">September</p>
+</div>
 
-        <span class="text-xs sm:text-sm md:text-base font-medium">2025</span>
-      </div>
-      <p class="mt-2 text-base sm:text-lg md:text-xl font-semibold">September</p>
-    </div>
-
-    <!-- Countdown -->
-    <div class="mt-6">
-      <p class="mb-2 text-xs sm:text-sm md:text-base">Acara akan dimulai dalam</p>
-      <div id="countdown" class="grid grid-cols-4 gap-4 sm:flex sm:justify-center sm:space-x-6 md:space-x-10 mt-4 text-xs sm:text-sm md:text-lg">
-        <div class="text-center">
-          <span id="hero-days" class="block text-2xl sm:text-3xl md:text-5xl font-bold">00</span>
-          <span>Hari</span>
-        </div>
-        <div class="text-center">
-          <span id="hero-hours" class="block text-2xl sm:text-3xl md:text-5xl font-bold">00</span>
-          <span>Jam</span>
-        </div>
-        <div class="text-center">
-          <span id="hero-minutes" class="block text-2xl sm:text-3xl md:text-5xl font-bold">00</span>
-          <span>Menit</span>
-        </div>
-        <div class="text-center">
-          <span id="hero-seconds" class="block text-2xl sm:text-3xl md:text-5xl font-bold">00</span>
-          <span>Detik</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<!-- Countdown -->
+<div class="mt-6">
+<p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
+<div id="countdown" class="flex justify-center space-x-6 md:space-x-10 mt-6 text-base md:text-lg">
+<div>
+<span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Hari</span>
+</div>
+<div>
+<span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Jam</span>
+</div>
+<div>
+<span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Menit</span>
+</div>
+<div>
+<span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Detik</span>
+</div>
+</div>
+</div>
 </section>
 
 <div class="relative text-white min-h-screen 
