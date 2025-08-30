@@ -357,82 +357,90 @@
             AOS.init();
         </script>
 
-<!-- 5. Halaman Cerita Perjalanan Cinta -->
-<section id="story" class="py-20 px-8 relative overflow-hidden">
-<!-- Ornamen Lampion (paling atas) -->
-<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-150">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-300">
-</div>
-<!-- Background -->
-<div class="absolute inset-0 bg-cover -z-10" 
-style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg1.png'); 
-                             filter: brightness(0.6);">
-</div>
-<!-- Glassmorphism Card -->
-<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
-<!-- Judul -->
-<div class="max-w-3xl mx-auto text-center">
-<h2 class="font-great-vibes text-6xl text-white mb-12" data-aos="fade-up">Our Love Story</h2>
-</div>
-<div class="relative max-w-2xl mx-auto">
-<!-- Timeline line -->
-<div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300"></div>
+    <!-- Love Story Section -->
+    <!-- FIX: ID diubah menjadi unik, cth: "story" -->
+    <section id="story" class="py-20 px-4 relative overflow-hidden">
+        <div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern delay-150">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern delay-300">
+        </div>
+        <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 md:p-12 max-w-5xl w-full mx-auto" data-aos="fade-up">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-script text-6xl text-white mb-12" data-aos="fade-up">Our Love Story</h2>
+            </div>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300 hidden md:block"></div>
+                <!-- Timeline items -->
+                <div class="space-y-12">
+                    <div class="md:grid md:grid-cols-2 md:gap-8 items-center" data-aos="fade-right">
+                         <div class="md:text-right">
+                              <h3 class="font-semibold text-lg text-sky-300">First Meet</h3>
+                              <p class="font-semibold text-lg text-white">2018</p>
+                              <p class="text-white/80 mt-1 text-sm">Our story began on Facebook. Even at a young age, he made a quiet but sincere commitment to me.</p>
+                         </div>
+                         <div class="mt-4 md:mt-0">
+                             <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item1.png" alt="First Meet" class="w-full rounded-lg shadow-lg">
+                         </div>
+                    </div>
+                </div>
 
-<!-- Timeline Item 1 -->
-<div class="relative mb-12" data-aos="fade-up">
-<div class="flex items-center" data-aos-target=".timeline-img-1">
-<div class="w-1/2 pr-8 text-right">
-<h3 class="font-semibold text-lg text-blue-900">First Meet</h3>
-<p class="font-semibold text-lg text-blue-800">2018</p>
-<p class="text-white/80 mt-1">We never imagined that a simple connection would bring us this far to the moment where we choose to walk together, forever. Our story began on Facebook back when he was in middle school, and I was in high school. Even at that young age, he made a quiet but sincere commitment to me.</p>
-</div>
-<div class="w-1/2 pl-8">
-      <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item1.png" alt="First Meet" class="timeline-img-1 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
-</div>
-</div>
-</div>
-
-<!-- Timeline Item 2 -->
-<div class="relative mb-12" data-aos="fade-up">
-<div class="flex items-center flex-row-reverse" data-aos-target=".timeline-img-2">
-<div class="w-1/2 pl-8 text-left">
-<h3 class="font-semibold text-lg text-blue-900">Engagement</h3>
-<p class="font-semibold text-lg text-blue-800">24–27 August 2025</p>
-<p class="text-white/80 mt-1">Time passed, and life took us in different directions. On August 24th, 2025, he returned not just with words, but with the courage to fulfill the promise he made years ago. On August 27th, we officially got engaged, surrounded by those we love</p>
-</div>
-<div class="w-1/2 pr-8">
-   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/lamaran.png" alt="Dating" class="timeline-img-2 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
-</div>
-</div>
-</div>
-
-<!-- Timeline Item 3 -->
-<div class="relative mb-12" data-aos="fade-up">
-<div class="flex items-center" data-aos-target=".timeline-img-3">
-<div class="w-1/2 pr-8 text-right">
-<h3 class="font-semibold text-lg text-blue-700">Wedding Vows & A New Beginning</h3>
-<p class="font-semibold text-lg text-blue-800">4 September 2025</p>
-<p class="text-white/80 mt-1">And now, we look forward to beginning our new chapter as husband and wife on September 4th, 2025, the day of our akad. This journey filled with time, distance, and unshaken intention has shaped our story. And now, we’re ready to write the rest of it, together.</p>
-</div>
-<div class="w-1/2 pl-8">
-   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item3.png" alt="Proposal" class="timeline-img-3 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
-</div>
-</div>
-</div>
-</div>
-<!-- Harapan -->
-<div class="max-w-md mx-auto text-center mt-8" data-aos="zoom-in-up" data-aos-delay="300">
-<div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-<p class="italic text-sm"><strong>Harapan Pengantin Pria:</strong> Semoga dia menjadi istri dunia dan akhirat.</p>
-<p class="italic text-sm mt-2"><strong>Harapan Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik.</p>
-</div>
-</div>
-</section>
+                    <div class="relative max-w-2xl mx-auto">
+                    <!-- Timeline line -->
+                    <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300"></div>
+                        <div class="relative mb-12" data-aos="fade-up">
+                            <div class="flex items-center" data-aos-target=".timeline-img-1">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <h3 class="font-semibold text-lg text-blue-900">First Meet</h3>
+                                    <p class="font-semibold text-lg text-blue-800">2018</p>
+                                    <p class="text-white/80 mt-1">We never imagined that a simple connection would bring us this far to the moment where we choose to walk together, forever. Our story began on Facebook back when he was in middle school, and I was in high school. Even at that young age, he made a quiet but sincere commitment to me.</p>
+                                </div>
+                                <div class="w-1/2 pl-8">
+                                  <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item1.png" alt="First Meet" class="timeline-img-1 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+                                </div>
+                            </div>
+                        </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="relative mb-12" data-aos="fade-up">
+                        <div class="flex items-center flex-row-reverse" data-aos-target=".timeline-img-2">
+                            <div class="w-1/2 pl-8 text-left">
+                                <h3 class="font-semibold text-lg text-blue-900">Engagement</h3>
+                                <p class="font-semibold text-lg text-blue-800">24–27 August 2025</p>
+                                <p class="text-white/80 mt-1">Time passed, and life took us in different directions. On August 24th, 2025, he returned not just with words, but with the courage to fulfill the promise he made years ago. On August 27th, we officially got engaged, surrounded by those we love</p>
+                            </div>
+                            <div class="w-1/2 pr-8">
+                               <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/lamaran.png" alt="Dating" class="timeline-img-2 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Timeline Item 3 -->
+                    <div class="relative mb-12" data-aos="fade-up">
+                        <div class="flex items-center" data-aos-target=".timeline-img-3">
+                            <div class="w-1/2 pr-8 text-right">
+                                <h3 class="font-semibold text-lg text-blue-700">Wedding Vows & A New Beginning</h3>
+                                <p class="font-semibold text-lg text-blue-800">4 September 2025</p>
+                                <p class="text-white/80 mt-1">And now, we look forward to beginning our new chapter as husband and wife on September 4th, 2025, the day of our akad. This journey filled with time, distance, and unshaken intention has shaped our story. And now, we’re ready to write the rest of it, together.</p>
+                            </div>
+                            <div class="w-1/2 pl-8">
+                                <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item3.png" alt="Proposal" class="timeline-img-3 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Harapan -->
+                    <div class="max-w-md mx-auto text-center mt-8" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+                            <p class="italic text-sm"><strong>Harapan Pengantin Pria:</strong> Semoga dia menjadi istri dunia dan akhirat.</p>
+                            <p class="italic text-sm mt-2"><strong>Harapan Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- Wedding Gift Section -->
 <section id="story" class="py-20 px-8 relative overflow-hidden">
