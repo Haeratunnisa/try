@@ -374,20 +374,6 @@
             </div>
             <div class="relative max-w-2xl mx-auto">
                 <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300 hidden md:block"></div>
-                <!-- Timeline items -->
-                <div class="space-y-12">
-                    <div class="md:grid md:grid-cols-2 md:gap-8 items-center" data-aos="fade-right">
-                         <div class="md:text-right">
-                              <h3 class="font-semibold text-lg text-sky-300">First Meet</h3>
-                              <p class="font-semibold text-lg text-white">2018</p>
-                              <p class="text-white/80 mt-1 text-sm">Our story began on Facebook. Even at a young age, he made a quiet but sincere commitment to me.</p>
-                         </div>
-                         <div class="mt-4 md:mt-0">
-                             <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item1.png" alt="First Meet" class="w-full rounded-lg shadow-lg">
-                         </div>
-                    </div>
-                </div>
-
                     <div class="relative max-w-2xl mx-auto">
                     <!-- Timeline line -->
                     <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300"></div>
@@ -416,7 +402,6 @@
                             </div>
                         </div>
                     </div>
-        
                     <!-- Timeline Item 3 -->
                     <div class="relative mb-12" data-aos="fade-up">
                         <div class="flex items-center" data-aos-target=".timeline-img-3">
@@ -442,28 +427,28 @@
         </div>
     </section>
 
-<!-- Wedding Gift Section -->
-<section id="story" class="py-20 px-8 relative overflow-hidden">
-<!-- Background -->
-<div class="absolute inset-0 bg-cover -z-10" 
-style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg3.png'); 
-                             filter: brightness(0.6);">
-</div>
-
-<!-- Ornamen Lampion (paling atas) -->
-<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-150">
-<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
-alt="lampion" class="w-12 h-12 lantern delay-300">
-</div>
+    <!-- Wedding Gift Section -->
+    <!-- FIX: ID diubah menjadi unik, cth: "gift" -->
+    <section id="gift" class="py-20 px-8 relative overflow-hidden">
+        <div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern delay-150">
+            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+                alt="lampion" class="w-12 h-12 lantern delay-300">
+        </div>
+        <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 md:p-12 max-w-5xl w-full mx-auto" data-aos="fade-up">
+            <div class="max-w-4xl mx-auto text-center">
+                <i data-lucide="gift" class="w-16 h-16 text-sky-400 mx-auto mb-6"></i>
+                <h2 class="font-script text-5xl text-white mb-4">Wedding Gift</h2>
+                <p class="text-white/80 leading-relaxed mb-8">
+                    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
+                </p>
 
 <!-- Glassmorphism Card -->
 <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
 <!--<section id="gift" class="py-20 px-6 bg-white"> -->
-   
 <div class="max-w-4xl mx-auto text-center">
 <div data-aos="fade-up">
 <i data-lucide="gift" class="w-16 h-16 text-sky-600 mx-auto mb-6"></i>
@@ -472,42 +457,43 @@ alt="lampion" class="w-12 h-12 lantern delay-300">
 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
 </p>
    
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-  <!-- Bank Muamalat -->
-  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
-    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" 
-         alt="Bank Muamalat" 
-         class="h-16 object-contain mx-auto mb-4">
-    <div>
-      <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
-      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
-    </div>
-    <button onclick="copyToClipboard('rekening-muamalat', this)" 
-            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
-      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
-      <span class="btn-text">Salin No. Rekening</span>
-    </button>
-  </div>
-
-  <!-- Bank BRI -->
-  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
-    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" 
-         alt="Bank BRI" 
-         class="h-16 object-contain mx-auto mb-4">
-    <div>
-      <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
-      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
-    </div>
-    <button onclick="copyToClipboard('rekening-bri', this)" 
-            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
-      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
-      <span class="btn-text">Salin No. Rekening</span>
-    </button>
-  </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Bank Muamalat -->
+                  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+                    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" 
+                         alt="Bank Muamalat" 
+                         class="h-16 object-contain mx-auto mb-4">
+                    <div>
+                      <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
+                      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+                    </div>
+                    <button onclick="copyToClipboard('rekening-muamalat', this)" 
+                            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+                      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+                      <span class="btn-text">Salin No. Rekening</span>
+                    </button>
+                  </div>
+              <!-- Bank BRI -->
+              <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+                <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" 
+                     alt="Bank BRI" 
+                     class="h-16 object-contain mx-auto mb-4">
+                <div>
+                  <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
+                  <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+                </div>
+                <button onclick="copyToClipboard('rekening-bri', this)" 
+                        class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+                  <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+                  <span class="btn-text">Salin No. Rekening</span>
+                </button>
+              </div>
+            </div>
 </div>
 </div>
 </div>
+            </div>
+        </div>
 </section>
 
 <!-- Guestbook Section -->
