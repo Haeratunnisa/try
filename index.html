@@ -593,23 +593,39 @@ style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wed
 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
 </p>
    
-<div class="flex flex-col md:flex-row gap-6 justify-center items-start">
-<!-- Bank Muamalat -->
-<div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg text-center flex-1">
-    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" alt="Bank Muamalat" class="w-24 h-auto mx-auto mb-4 object-contain">
-    <p class="text-lg font-bold">8010117178</p>
-    <p class="mb-4">a/n MIFTAH KHAIRANI</p>
-    <button class="px-4 py-2 bg-sky-600 text-white rounded-lg">Salin No. Rekening</button>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  <!-- Bank Muamalat -->
+  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" 
+         alt="Bank Muamalat" 
+         class="h-16 object-contain mx-auto mb-4">
+    <div>
+      <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
+      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+    </div>
+    <button onclick="copyToClipboard('rekening-muamalat', this)" 
+            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+      <span class="btn-text">Salin No. Rekening</span>
+    </button>
   </div>
-<!-- BRI -->
-<div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg text-center flex-1">
-    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" alt="Bank BRI" class="w-24 h-auto mx-auto mb-4 object-contain">
-    <p class="text-lg font-bold">504201016983530</p>
-    <p class="mb-4">a/n MIFTAH KHAIRANI</p>
-    <button class="px-4 py-2 bg-sky-600 text-white rounded-lg">Salin No. Rekening</button>
+
+  <!-- Bank BRI -->
+  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" 
+         alt="Bank BRI" 
+         class="h-16 object-contain mx-auto mb-4">
+    <div>
+      <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
+      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+    </div>
+    <button onclick="copyToClipboard('rekening-bri', this)" 
+            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+      <span class="btn-text">Salin No. Rekening</span>
+    </button>
   </div>
-</button>
-</div>
 </div>
 </div>
 </div>
