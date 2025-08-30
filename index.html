@@ -21,13 +21,19 @@
 
     <!-- AOS (Animate On Scroll) Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <style>
         /* Custom styles and theme extensions */
         body {
             font-family: 'Lora', serif;
-            /*background-color: #0d1b2a; /* Light pink background */
-            overflow-x: hidden; /* Mencegah scroll horizontal 
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+
+        .main-background {
+            background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         
         /* FIX: Menghapus background-image dari body untuk menghindari tumpukan */
@@ -97,15 +103,6 @@
             }
         }
         
-        /* FIX: Membuat satu kelas background utama untuk konsistensi */
-        .main-background {
-             background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png');
-             background-repeat: no-repeat;
-             background-attachment: fixed;
-             background-position: center center;
-             background-size: cover;
-             position: relative;
-        } 
 
         /* FIX: Menambahkan overlay gelap di atas background utama agar teks lebih mudah dibaca */
         .main-background::before {
