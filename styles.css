@@ -1,56 +1,192 @@
-/* Basic fonts */
-body { font-family: 'Lora', serif; }
+/* ===========================
+   styles.css — Custom styles
+   ===========================
+   Melekatkan style asli + perbaikan responsif
+*/
 
-/* Utility font for script headings */
-.font-script { font-family: 'Playfair Display', serif; }
-
-/* Colors / buttons */
-.btn-custom {
-  background-color: #075985;
-  color: #fff;
-  transition: background-color .25s;
+/* ---------- Base / Typography ---------- */
+:root{
+  --sky-50: #F0F8FF;
+  --sky-100: #E0F2FE;
+  --sky-600: #0EA5E9;
+  --sky-800: #075985;
+  --glass-bg: rgba(255,255,255,0.10);
 }
-.btn-custom:hover { background-color: #0369A1; }
 
-/* Section backgrounds (full-bleed) */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* penting: cegah horizontal scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--sky-50); /* fallback */
+  font-family: "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+/* utility font class (dipakai di HTML) */
+.font-script, .font-heading {
+  font-family: "Playfair Display", serif;
+}
+
+/* ---------- Color helpers (mirip original) ---------- */
+.bg-sky-50 { background-color: var(--sky-50); }
+.bg-sky-100 { background-color: var(--sky-100); }
+.text-sky-800 { color: var(--sky-800); }
+.text-sky-600 { color: var(--sky-600); }
+.border-sky-800 { border-color: var(--sky-800); }
+
+/* ---------- Buttons ---------- */
+.btn-custom {
+  background-color: var(--sky-800);
+  color: #fff;
+  transition: background-color .25s ease, transform .12s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+.btn-custom:hover { background-color: #0369A1; transform: translateY(-1px); }
+
+/* small button text container */
+.btn-text { display: inline-block; }
+
+/* ---------- Section backgrounds (full-bleed) ----------
+   NOTE: use exact URLs from your repo (keamanan: gunakan URL yang valid)
+   These classes make each section full-bleed while the card inside keeps max-width.
+*/
 .section-bg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  width: 100%;
 }
 
-/* Put the same image URLs you used before */
-.bg-hero { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); }
-.bg-details { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
-.bg-story { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg1.png'); }
-.bg-gift { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg3.png'); }
-.bg-guestbook { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
+.bg-hero   { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); }
+.bg-details{ background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
+.bg-story  { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg1.png'); }
+.bg-gift   { background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg3.png'); }
+.bg-guestbook{ background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); }
 
-/* Fix: ensure no horizontal overflow */
-html, body { overflow-x: hidden; }
+/* ---------- Glassmorphism card (used inside each section) ---------- */
+.glass-card, .glass {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.25);
+}
 
-/* Play overlay transition */
-#playOverlay { transition: opacity 500ms ease, visibility 500ms; }
+/* Small tweak for inner white forms */
+.form-card {
+  background: #ffffff;
+  color: #111827;
+}
+
+/* ---------- Overlay helpers ---------- */
+.overlay-dark { background: rgba(0,0,0,0.45); position: absolute; inset: 0; z-index: 0; }
+.overlay-dark-60 { background: rgba(0,0,0,0.6); position: absolute; inset: 0; z-index: 0; }
+
+/* ---------- Play overlay (opening modal) ---------- */
+#playOverlay {
+  transition: opacity 400ms ease, visibility 400ms;
+  will-change: opacity, visibility;
+}
 #playOverlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-/* Sakura petal animation */
-#sakura-container { z-index: 30; pointer-events: none; overflow: hidden; position: fixed; inset: 0; }
+/* small entrance animation classes */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp .8s ease both; }
+
+/* ---------- Sakura / Petal animation ---------- */
+/* container is fixed in DOM (#sakura-container) */
+#sakura-container { position: fixed; inset: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+
+/* individual petals */
 .sakura-petal {
   position: absolute;
-  top: -50px;
+  top: -60px;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 18px; height: 18px;
-  animation: fall linear forwards;
-}
-@keyframes fall {
-  to { transform: translateY(110vh) translateX(var(--wind-effect, 0px)) rotate(360deg); opacity: 0; }
+  width: 18px;
+  height: 18px;
+  opacity: 0.95;
+  transform-origin: center;
+  animation: sakura-fall linear forwards;
+  will-change: transform, opacity;
 }
 
-/* Lantern float */
-@keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(8px)} }
+/* randomized fall animation (duration set inline from JS) */
+@keyframes sakura-fall {
+  to {
+    transform: translateY(110vh) translateX(var(--wind-effect, 0px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Lantern float animation (top icons) ---------- */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
 .lantern { animation: float 4s ease-in-out infinite; }
+.delay-150 { animation-delay: .15s; }
+.delay-300 { animation-delay: .3s; }
 
-/* small helpers */
-.font-heading { font-family: 'Playfair Display', serif; }
+/* ---------- Timeline images -- subtle hover ---------- */
+.timeline-img-1, .timeline-img-2, .timeline-img-3 {
+  transition: filter .45s ease, transform .45s ease;
+  filter: grayscale(1) contrast(.95) saturate(.9);
+}
+.timeline-img-1:hover, .timeline-img-2:hover, .timeline-img-3:hover {
+  filter: grayscale(0) contrast(1) saturate(1);
+  transform: translateY(-6px);
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+/* Center card max width adjustments — keep content readable on large screens */
+@media (min-width: 1280px){
+  .max-w-3xl { max-width: 64rem; } /* larger cards on xl if needed */
+}
+
+/* Prevent hero card from being too wide and keep background full-bleed */
+.section-content {
+  width: 100%;
+  max-width: 72rem; /* safe value */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Forms inside guestbook: ensure inputs readable on small screens */
+input[type="text"], textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* ---------- Accessibility helpers ---------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Tiny fixes for the "right-strip" bug ---------- */
+/* Ensure no element accidentally uses vw-based width that causes overflow */
+* { box-sizing: border-box; }
+
+/* Defensive rule: if any element extends beyond viewport, clip visually (but prefer to fix source) */
+html, body { max-width: 100vw; }
+
+/* ---------- Misc / small helpers ---------- */
+.text-muted { color: rgba(255,255,255,0.75); }
+.center { text-align: center; }
+.hidden { display: none !important; }
+
+/* End of styles.css */
