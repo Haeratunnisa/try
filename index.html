@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Wedding of Rama & Miftah</title>
 
-  <!-- Tailwind (CDN - for quick dev) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
@@ -16,196 +16,118 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="overflow-x-hidden text-gray-800">
+<body class="font-serif bg-sky-50 text-gray-800">
 
-  <!-- Play overlay (first open) -->
-  <div id="playOverlay" class="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-    <div class="bg-white/70 backdrop-blur-md p-6 rounded-2xl text-center max-w-lg w-full">
-      <p class="text-sky-900 text-lg">The Wedding Of</p>
-      <h1 class="font-script text-4xl md:text-6xl text-sky-800 my-4">Rama & Miftah</h1>
-      <p class="text-sky-700">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-      <p id="guest-name" class="text-xl font-bold text-sky-900 mt-2">Tamu Undangan</p>
-      <button id="playButton" class="mt-6 btn-custom px-6 py-3 rounded-full">💌 Buka Undangan 💌</button>
+  <!-- Overlay Buka Undangan -->
+  <div id="playOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 text-center text-white">
+    <h1 class="text-2xl md:text-4xl font-bold fade-in-up overlay-text">The Wedding of</h1>
+    <h2 class="text-3xl md:text-5xl font-script mt-2 fade-in-up overlay-text">Rama & Miftah</h2>
+    <button id="playButton" class="mt-8 px-6 py-3 btn-custom rounded-lg text-lg fade-in-up overlay-button">
+      Buka Undangan
+    </button>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section-bg bg-hero relative flex flex-col items-center justify-center text-white text-center">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 max-w-3xl w-full mx-auto space-y-6" data-aos="fade-up">
+      <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" alt="Kaligrafi" class="mx-auto w-32 md:w-48">
+      <div class="relative w-40 h-40 md:w-56 md:h-56 mx-auto rounded-xl overflow-hidden shadow-lg border-4 border-white/40">
+        <img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" alt="Foto Mempelai" class="w-full h-full object-cover">
+      </div>
+      <h1 class="font-script text-3xl md:text-4xl">Rama & Miftah</h1>
+      <p class="text-sm md:text-base">Akan melangsungkan Akad & Walimatul 'Urs</p>
+      <p class="italic text-gray-200">InsyaAllah</p>
+
+      <!-- Countdown -->
+      <div class="mt-6">
+        <p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
+        <div id="countdown" class="grid grid-cols-4 gap-4 md:gap-8 text-center">
+          <div><span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span><span>Hari</span></div>
+          <div><span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span><span>Jam</span></div>
+          <div><span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span><span>Menit</span></div>
+          <div><span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span><span>Detik</span></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Floating lanterns top -->
-  <div class="absolute top-6 left-1/2 -translate-x-1/2 flex gap-6 z-40 pointer-events-none">
-    <img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern">
-    <img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern delay-150">
-    <img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern delay-300">
-  </div>
+  <!-- Details Section -->
+  <section id="details" class="section-bg bg-details relative py-20 px-6 text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+      <h2 class="font-script text-4xl">Detail Acara</h2>
+      <p>Kamis, 04 September 2025</p>
+      <p>Lokasi: Gedung Serbaguna</p>
+    </div>
+  </section>
 
-  <!-- Sakura container (animation petals) -->
-  <div id="sakura-container" class="pointer-events-none fixed inset-0 z-30"></div>
+  <!-- Story Section -->
+  <section id="story" class="section-bg bg-story relative py-20 px-6 text-center text-white">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+      <h2 class="font-script text-4xl">Our Story</h2>
+      <p>Perjalanan kisah cinta Rama & Miftah hingga hari bahagia ini.</p>
+    </div>
+  </section>
 
-  <!-- Music audio -->
+  <!-- Gift Section -->
+  <section id="gift" class="section-bg bg-gift relative py-20 px-6 text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+      <h2 class="font-script text-4xl">Wedding Gift</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Bank Muamalat -->
+        <div class="bg-white/10 backdrop-blur-xl rounded-lg p-6">
+          <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" class="w-24 mx-auto">
+          <p id="rekening-muamalat" class="text-2xl font-bold my-2">8010117178</p>
+          <p>a/n MIFTAH KHAIRANI</p>
+          <button onclick="copyToClipboard('rekening-muamalat', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+            <i data-lucide="copy" class="w-4 h-4 mr-2"></i> <span class="btn-text">Salin No. Rekening</span>
+          </button>
+        </div>
+        <!-- BRI -->
+        <div class="bg-white/10 backdrop-blur-xl rounded-lg p-6">
+          <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" class="w-24 mx-auto">
+          <p id="rekening-bri" class="text-2xl font-bold my-2">504201016983530</p>
+          <p>a/n MIFTAH KHAIRANI</p>
+          <button onclick="copyToClipboard('rekening-bri', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+            <i data-lucide="copy" class="w-4 h-4 mr-2"></i> <span class="btn-text">Salin No. Rekening</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guestbook Section -->
+  <section id="guestbook" class="section-bg bg-guestbook relative py-20 px-6">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 max-w-4xl mx-auto space-y-6 bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-12" data-aos="fade-up">
+      <h2 class="font-script text-4xl text-center text-white">Buku Tamu</h2>
+      <form id="guestbookForm" class="space-y-4">
+        <input type="text" id="nama" name="nama" placeholder="Nama" class="w-full px-4 py-2 rounded-lg text-black" required>
+        <textarea id="ucapan" name="ucapan" rows="4" placeholder="Ucapan" class="w-full px-4 py-2 rounded-lg text-black" required></textarea>
+        <button type="submit" class="w-full btn-custom px-6 py-3 rounded-lg">Kirim Ucapan</button>
+      </form>
+      <div id="ucapanList" class="mt-6 space-y-4"></div>
+    </div>
+  </section>
+
+  <!-- Audio -->
   <audio id="backgroundMusic" loop>
-    <source src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/You%20Are%20The%20Reason.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung tag audio.
+    <source src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.mp3" type="audio/mp3">
   </audio>
 
-  <!-- Music control -->
-  <button id="musicControl" class="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-gray-800/60 backdrop-blur-sm text-white flex items-center justify-center shadow-lg">
-    <i id="musicIcon" class="fas fa-play hidden"></i>
-    <svg id="musicSvg" xmlns="http://www.w3.org/2000/svg" class="lucide-icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18V5l12-2v13"/></svg>
-  </button>
-
-  <main id="main">
-
-    <!-- HERO -->
-    <section id="hero" class="section-bg bg-hero relative min-h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
-      <!-- bg is from CSS .bg-hero, overlay darkens -->
-      <div class="absolute inset-0 bg-black/40"></div>
-
-      <div class="relative z-10 w-full max-w-5xl p-6 sm:p-8 md:p-12 space-y-6">
-        <div class="mx-auto w-40 md:w-56">
-          <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" alt="Kaligrafi" class="w-full" />
-        </div>
-
-        <div class="mx-auto w-40 h-40 md:w-64 md:h-64 rounded-xl overflow-hidden border-4 border-white/40 shadow-lg">
-          <img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" alt="Foto Mempelai Rama & Miftah" class="w-full h-full object-cover" />
-        </div>
-
-        <h1 class="font-script text-3xl md:text-5xl">Rama & Miftah</h1>
-        <p class="text-sm md:text-base text-gray-100">Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)</p>
-        <p class="italic text-gray-200">InsyaAllah</p>
-
-        <!-- date block -->
-        <div class="mt-4 flex flex-col items-center">
-          <div class="flex items-center gap-4">
-            <span class="text-sm md:text-base">Kamis</span>
-
-            <div class="flex items-center">
-              <div class="w-px h-8 bg-white/70"></div>
-              <div class="px-3 text-4xl md:text-6xl font-bold">04</div>
-              <div class="w-px h-8 bg-white/70"></div>
-            </div>
-
-            <span class="text-sm md:text-base">2025</span>
-          </div>
-          <p class="mt-2 text-lg md:text-xl font-semibold">September</p>
-        </div>
-
-        <!-- countdown -->
-        <div class="mt-6">
-          <p class="text-xs md:text-sm">Acara akan dimulai dalam</p>
-          <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center mt-4 text-lg md:text-xl">
-            <div class="text-center"><span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span><small>Hari</small></div>
-            <div class="text-center"><span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span><small>Jam</small></div>
-            <div class="text-center"><span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span><small>Menit</small></div>
-            <div class="text-center"><span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span><small>Detik</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DETAILS (example) -->
-    <section id="details" class="section-bg bg-details relative min-h-screen w-full flex items-center justify-center text-white">
-      <div class="absolute inset-0 bg-black/45"></div>
-      <div class="relative z-10 max-w-4xl text-center p-8">
-        <h2 class="font-script text-4xl mb-4">Save the Date</h2>
-        <p>Kamis, 04 September 2025 - Poros Wamengkoli, Buton Tengah.</p>
-      </div>
-    </section>
-
-    <!-- STORY -->
-    <section id="story" class="section-bg bg-story relative py-20 px-6">
-      <div class="absolute inset-0 bg-black/35"></div>
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8">
-        <div class="text-center">
-          <h2 class="font-script text-4xl text-white">Our Love Story</h2>
-          <p class="text-white/80">Perjalanan kisah cinta kami.</p>
-        </div>
-        <!-- timeline items (kept structure from your file) -->
-        <!-- ... (you can paste the timeline HTML here from your original file) ... -->
-      </div>
-    </section>
-
-    <!-- GIFT -->
-    <section id="gift" class="section-bg bg-gift relative py-20 px-6">
-      <div class="absolute inset-0 bg-black/45"></div>
-      <div class="relative z-10 max-w-5xl mx-auto space-y-6">
-        <div class="text-center">
-          <h2 class="font-script text-4xl text-white">Wedding Gift</h2>
-          <p class="text-white/80">Informasi rekening & cara memberi.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Muamalat -->
-          <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
-            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" alt="Bank Muamalat" class="h-16 object-contain mx-auto mb-4">
-            <div>
-              <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
-              <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
-            </div>
-            <button onclick="copyToClipboard('rekening-muamalat', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center justify-center mx-auto text-sm">
-              <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"></svg>
-              <span class="btn-text">Salin No. Rekening</span>
-            </button>
-          </div>
-          <!-- BRI -->
-          <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
-            <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" alt="Bank BRI" class="h-16 object-contain mx-auto mb-4">
-            <div>
-              <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
-              <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
-            </div>
-            <button onclick="copyToClipboard('rekening-bri', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center justify-center mx-auto text-sm">
-              <span class="btn-text">Salin No. Rekening</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GUESTBOOK -->
-    <section id="guestbook" class="section-bg bg-guestbook relative py-20 px-6">
-      <div class="absolute inset-0 bg-black/60"></div>
-      <div class="relative z-10 max-w-4xl mx-auto bg-white/10 backdrop-blur-xl rounded-2xl p-8 md:p-12 space-y-6">
-        <div class="text-center">
-          <h2 class="font-script text-4xl text-white">📝 Guest Book</h2>
-          <p class="text-white/80">Berikan ucapan dan doa restu terbaik Anda</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow">
-          <form id="guestbookForm">
-            <div class="mb-4">
-              <label for="nama" class="block text-gray-700 mb-2">Nama</label>
-              <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>
-            </div>
-            <div class="mb-4">
-              <label for="ucapan" class="block text-gray-700 mb-2">Ucapan</label>
-              <textarea id="ucapan" name="ucapan" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required></textarea>
-            </div>
-            <button type="submit" class="w-full btn-custom px-6 py-3 rounded-lg">Kirim Ucapan</button>
-          </form>
-        </div>
-
-        <div id="ucapanList" class="mt-8 space-y-4"></div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-12 text-center bg-sky-800 text-white">
-      <p>Terima kasih atas doa restu Anda</p>
-      <p class="font-script text-3xl my-4">Rama & Rin</p>
-      <p class="text-sm text-sky-100">&copy; 2025. nisaDev.</p>
-    </footer>
-
-  </main>
-
-  <!-- AOS + Lucide + Custom JS -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script> AOS.init({ once: true, duration: 900 }); </script>
+  <script> AOS.init({ once:true, duration:900 }); </script>
   <script> lucide.createIcons(); </script>
-
   <script src="scripts.js"></script>
 </body>
 </html>
