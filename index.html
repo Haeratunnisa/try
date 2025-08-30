@@ -386,6 +386,13 @@ easing: 'ease-in-out', // efek transisi lebih halus
 <!-- Halaman 3 -->
 <!-- Event Details Section -->
 <section id="hero" class="relative h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden">
+
+<!-- Background -->
+<div class="absolute inset-0 bg-cover bg-center" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
+             filter: brightness(0.6);">
+</div>
+
 <!-- Ornamen Lampion (paling atas) -->
 <div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
 <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
@@ -394,11 +401,6 @@ alt="lampion" class="w-12 h-12 lantern">
 alt="lampion" class="w-12 h-12 lantern delay-150">
 <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
 alt="lampion" class="w-12 h-12 lantern delay-300">
-</div>
-<!-- Background -->
-<div class="absolute inset-0 bg-cover bg-center" 
-style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
-             filter: brightness(0.6);">
 </div>
    
 <!-- Glassmorphism Card -->
@@ -416,7 +418,7 @@ style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wed
 <p class="text-lg text-white-800">Kamis, 04 September 2025</p>
 <p class="text-lg text-white-800">Pukul 08:00 WITA</p>
 <p class="mt-4 text-sky-750"><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2"></i>Jl. Poros Wamengkoli, Desa Nepa Mekar, Kec. Lakudo, Kab. Buton Tengah, Sulawesi Tenggara.</p>
-<a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Rama+%26+Rin&dates=20251010T020000Z/20251010T040000Z&details=Acara+pernikahan+Rama+dan+Rin&location=Gedung+Pernikahan+Impian,+Jakarta" target="_blank" class="mt-6 inline-block bg-blue-500 text-white rounded-full px-6 py-2 text-sm hover:bg-blue-600 transition-colors">
+<a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Rama+%26+Rin&dates=20251010T020000Z/20251010T040000Z&details=Acara+pernikahan+Rama+dan+Rin&location=Gedung+Pernikahan+Impian,+Jakarta" target="_blank" class="mt-6 inline-block bg-blue-500 text-white rounded-full px-6 py-2 text-sm hover:bg-skye-900 transition-colors">
 🔔 Ingatkan Saya
 </a>
 </div>
@@ -483,7 +485,7 @@ style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wed
 <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
 <!-- Judul -->
 <div class="max-w-3xl mx-auto text-center">
-<h2 class="font-great-vibes text-6xl text-white-900 mb-12" data-aos="fade-up">Our Love Story</h2>
+<h2 class="font-great-vibes text-6xl text-white mb-12" data-aos="fade-up">Our Love Story</h2>
 </div>
 <div class="relative max-w-2xl mx-auto">
 <!-- Timeline line -->
@@ -512,7 +514,7 @@ style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wed
 <p class="text-white/80 mt-1">Time passed, and life took us in different directions. On August 24th, 2025, he returned not just with words, but with the courage to fulfill the promise he made years ago. On August 27th, we officially got engaged, surrounded by those we love</p>
 </div>
 <div class="w-1/2 pr-8">
-   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/Lamaran1.png" alt="Dating" class="timeline-img-2 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/lamaran.png" alt="Dating" class="timeline-img-2 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
 </div>
 </div>
 </div>
@@ -573,8 +575,8 @@ style="background-image: url('https://lh3.googleusercontent.com/d/1ijcZoamdBSD15
 <div class="max-w-4xl mx-auto text-center">
 <div data-aos="fade-up">
 <i data-lucide="gift" class="w-16 h-16 text-sky-600 mx-auto mb-6"></i>
-<h2 class="font-script text-5xl text-sky-800 mb-4">Wedding Gift</h2>
-<p class="text-gray-600 leading-relaxed mb-8">
+<h2 class="font-script text-5xl text-white mb-4">Wedding Gift</h2>
+<p class="text-white/80 leading-relaxed mb-8">
 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
 </p>
 <div class="grid md:grid-cols-2 gap-8">
@@ -582,7 +584,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika membe
 <div class="bg-sky-50 p-6 rounded-lg shadow-inner">
 <p class="text-lg font-semibold text-sky-800">Bank Muamalat</p>
 <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
-<p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+<p class="text-md text-gray-800">a/n MIFTAH KHAIRANI</p>
 <button onclick="copyToClipboard('rekening-muamalat', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
 <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
 <span class="btn-text">Salin No. Rekening</span>
@@ -592,7 +594,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika membe
 <div class="bg-sky-50 p-6 rounded-lg shadow-inner">
 <p class="text-lg font-semibold text-sky-800">BRI</p>
 <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
-<p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+<p class="text-md text-gray-800">a/n MIFTAH KHAIRANI</p>
 <button onclick="copyToClipboard('rekening-bri', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
 <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
 <span class="btn-text">Salin No. Rekening</span>
@@ -607,8 +609,8 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika membe
 <section id="guestbook" class="py-20 px-6 bg-sky-50">
 <div class="max-w-4xl mx-auto">
 <div class="text-center mb-12" data-aos="fade-up">
-<h2 class="font-script text-5xl text-sky-800 mb-4">Buku Tamu</h2>
-<p class="text-gray-600">Berikan ucapan dan doa restu terbaik Anda untuk kedua mempelai</p>
+<h2 class="font-script text-5xl text-white mb-4">Buku Tamu</h2>
+<p class="text-white/80">Berikan ucapan dan doa restu terbaik Anda untuk kedua mempelai</p>
 </div>
 <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up">
 <form id="guestbookForm">
