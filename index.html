@@ -1,133 +1,772 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Wedding of Rama & Miftah</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding of Rama & Miftah</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Google Fonts: Lora and Playfair Display -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-  <!-- AOS (Animate On Scroll) -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+<!-- AOS (Animate On Scroll) Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+/* Custom styles and theme extensions */
+body {
+font-family: 'Lora', serif;
+background-color: #F0F8FF; /* Warna dasar Biru Langit */
+overflow: hidden; /* Mencegah scroll saat overlay aktif */
+}
+.font-script {
+font-family: 'Playfair Display', serif;
+}
+
+/* === PALET WARNA TEMA BIRU LANGIT === */
+.bg-sky-50 { background-color: #F0F8FF; }
+.bg-sky-100 { background-color: #E0F2FE; }
+.text-sky-800 { color: #075985; } /* Biru Tua */
+.text-sky-600 { color: #0EA5E9; } /* Biru Langit */
+.border-sky-800 { border-color: #075985; }
+.ring-sky-600:focus { --tw-ring-color: #0EA5E9; }
+.btn-custom {
+background-color: #075985;
+color: #FFFFFF;
+transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+background-color: #0369A1;
+}
+
+/* === STYLE UNTUK TRANSIFSI & ANIMASI === */
+#playOverlay {
+transition: opacity 1.5s ease-in-out, backdrop-filter 1.5s ease-in-out;
+}
+#playOverlay.hidden {
+opacity: 0;
+pointer-events: none;
+backdrop-filter: blur(0px);
+}
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+.overlay-text { opacity: 0; animation-delay: 0.5s; }
+.overlay-button { opacity: 0; animation-delay: 0.8s; }
+
+/* Kontainer Animasi */
+#sakura-container {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+pointer-events: none;
+overflow: hidden;
+z-index: 999;
+}
+
+/* Animasi Bunga Sakura */
+.sakura-petal {
+position: absolute;
+top: -50px;
+background-image: url('https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps');
+background-size: contain;
+background-repeat: no-repeat;
+animation: fall linear;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(15px); }
+}
+.lantern {
+animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fall {
+to {
+transform: translateY(105vh) translateX(var(--wind-effect)) rotate(720deg);
+opacity: 0;
+}
+}
+
+/* Background nuansa Jepang & Cina */
+body {
+background: url('https://png.pngtree.com/background/20210709/original/pngtree-red-chinese-style-lantern-picture-image_934344.jpg') no-repeat center center fixed;
+background-size: cover;
+}
+.overlay {
+background: rgba(0, 0, 0, 0.65); /* lapisan transparan gelap */
+}
+</style>
 </head>
-<body class="font-serif bg-sky-50 text-gray-800">
+<body class="bg-sky-50 text-gray-800">
 
-  <!-- Overlay Buka Undangan -->
-  <div id="playOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 text-center text-white">
-    <h1 class="text-2xl md:text-4xl font-bold fade-in-up overlay-text">The Wedding of</h1>
-    <h2 class="text-3xl md:text-5xl font-script mt-2 fade-in-up overlay-text">Rama & Miftah</h2>
-    <button id="playButton" class="mt-8 px-6 py-3 btn-custom rounded-lg text-lg fade-in-up overlay-button">
-      Buka Undangan
+<div class="absolute top-6 flex gap-8 justify-center w-full">
+<img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern">
+<img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://cdn-icons-png.flaticon.com/512/562/562120.png" alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
+
+<!-- KONTENER UNTUK ANIMASI SAKURA -->
+<div id="sakura-container"></div>
+
+<!-- Audio Player -->
+<audio id="backgroundMusic" loop>
+<source src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/You%20Are%20The%20Reason.mp3" type="audio/mpeg">
+Browser Anda tidak mendukung tag audio.
+</audio>
+
+<div id="playOverlay" class="fixed inset-0 flex flex-col items-center justify-center 
+   backdrop-blur-md bg-gradient-to-b from-sky-200/60 via-blue-300/50 to-rose-200/40 
+   z-[9999] text-center text-white p-4">
+
+<div class="bg-white/60 backdrop-blur-md p-8 rounded-2xl shadow-xl">
+<p class="text-lg md:text-xl text-sky-900">The Wedding Of</p>
+<h1 class="font-heading text-5xl md:text-7xl text-sky-800 my-4">Rama & Miftah</h1>
+<p class="text-md text-sky-700 mt-8">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+<p id="guest-name" class="text-xl font-bold text-sky-900 mt-2">Tamu Undangan</p>
+<button id="playButton" 
+class="mt-6 py-3 px-6 text-lg rounded-full 
+                bg-sky-400/30 text-white 
+                border border-sky-200 
+                hover:bg-sky-400/50 
+                transition-all duration-300 
+                shadow-lg fade-in-up overlay-button">
+💌 Buka Undangan 💌
+</button>
+</div>
+</div> 
+
+<!-- Main Content -->
+<main id="main-content">
+
+<!-- Music Control Button -->
+<button id="musicControl" class="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm text-white flex items-center justify-center shadow-lg">
+<i id="musicIcon" class="fas fa-pause"></i>
+</button>
+
+<!-- Hero Section -->
+<section id="hero" class="relative h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden">
+<!-- Background -->
+<div class="absolute inset-0 bg-cover bg-center" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.png'); 
+               filter: brightness(0.6);">
+</div>
+
+<!-- Glassmorphism Card -->
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
+
+<!-- Kaligrafi Jepang + Cina -->
+<div class="mb-4">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" 
+alt="Kaligrafi Jepang Cina" 
+class="mx-auto w-40 md:w-56">
+</div>
+
+<!-- Frame Foto -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-4 border-4 border-white/40 rounded-xl overflow-hidden shadow-lg">
+<img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" 
+alt="Foto Mempelai" 
+class="w-full h-full object-cover">
+</div>
+
+<!-- Nama Mempelai -->
+<h1 class="font-script text-3xl md:text-4xl text-white">Rama & Miftah</h1>
+
+<!-- Deskripsi Acara -->
+<p class="text-sm md:text-base text-gray-100">
+Akan Melangsungkan Akad dan Walimatul 'Urs (Resepsi)
+</p>
+<p class="italic text-gray-200">InsyaAllah</p>
+
+<!-- Tanggal -->
+<div class="mt-4 flex flex-col items-center">
+<div class="flex items-center gap-6">
+<span class="text-sm md:text-base font-medium">Kamis</span>
+
+<!-- Angka dengan garis vertikal -->
+<div class="flex items-center">
+<div class="w-px h-12 bg-white/70"></div>
+<div class="px-4 text-5xl md:text-7xl font-bold">04</div>
+<div class="w-px h-12 bg-white/70"></div>
+</div>
+
+<span class="text-sm md:text-base font-medium">2025</span>
+</div>
+<p class="mt-2 text-lg md:text-xl font-semibold">September</p>
+</div>
+
+<!-- Countdown -->
+<div class="mt-6">
+<p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
+<div id="countdown" class="flex justify-center space-x-6 md:space-x-10 mt-6 text-base md:text-lg">
+<div>
+<span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Hari</span>
+</div>
+<div>
+<span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Jam</span>
+</div>
+<div>
+<span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Menit</span>
+</div>
+<div>
+<span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span>
+<span>Detik</span>
+</div>
+</div>
+</div>
+</section>
+
+<div class="relative text-white min-h-screen 
+            bg-[url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png')] 
+            bg-cover bg-center">
+
+<!-- Overlay Transparan -->
+<div class="absolute inset-0 bg-black/60"></div>
+<!-- Ornamen Lampion (paling atas) -->
+<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
+
+<!-- Kaligrafi Basmalah -->
+<div data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bismillah.png" 
+alt="Basmallah" class="mx-auto w-60">
+</div>
+
+<!-- Salam & Ayat -->
+<div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+<div class="text-center mt-6 px-6 max-w-2xl mx-auto">
+<h2 class="font-semibold text-lg italic">Assalamualaikum Wr.Wb.</h2>
+<p class="mt-2 text-sm">Segala Puji hanya Milik Allah عَزَّ وَجَلَّ</p>
+
+<p class="mt-4 leading-relaxed text-sm italic">
+وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+</p>
+
+<p class="mt-4 text-sm italic">
+"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+<br><span class="font-semibold">(QS. Ar-Rum: 21)</span>
+</p>
+
+<p class="mt-4">Dengan Mengharap Ridho-Nya, Kami...</p>
+</div>
+</div>
+<!-- Foto Mempelai Wanita -->
+<div data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">
+<div class="mt-10 text-center">
+<div class="w-40 h-40 rounded-2xl overflow-hidden border-4 border-white mx-auto">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/mempelaiW.png" alt="Mempelai Wanita" class="w-full h-full object-cover">
+</div>
+<h3 class="mt-3 font-semibold text-lg">Miftah Khairani, S. Pd., M. Pd.</h3>
+<p class="text-sm text-gray-300">Putri pertama dari Bapak Mansur & Ibu Halima, S.IP</p>
+</div>
+</div>
+<!-- Simbol Penghubung -->
+<div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="800" class="text-center">
+<div class="my-6 text-4xl font-bold text-sky-400">&</div>
+</div>
+<!-- Foto Mempelai Pria -->
+<div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="1000">
+<div class="text-center">
+<div class="w-40 h-40 rounded-2xl overflow-hidden border-4 border-white mx-auto">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/memperlaiP.png" alt="Mempelai Pria" class="w-full h-full object-cover">
+</div>
+<h3 class="mt-3 font-semibold text-lg">Muhamad Rama Muhyinur Syarifuddin, S. Pd</h3>
+<p class="text-sm text-gray-300">Putra dari Bapak Syarifuddin & Ibu Sri Rezeki</p>
+</div>
+</div>
+<!-- Penutup -->
+<div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1200">
+<div class="mt-10 px-6 max-w-2xl text-center text-sm leading-relaxed mx-auto">
+Bermaksud Ingin Menyempurnakan Separuh Agama dan Mengikuti Sunnah Rasulullah ﷺ dalam Membangun Keluarga yang Sakinah, Mawaddah, Warohmah.
+</div>
+</div>
+</div>  
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+once: true, // animasi hanya sekali saat discroll, tidak berulang
+duration: 1000, // default durasi animasi
+easing: 'ease-in-out', // efek transisi lebih halus
+});
+</script>
+
+<!-- Halaman 3 -->
+<!-- Event Details Section -->
+<section id="hero" class="relative h-screen flex flex-col items-center justify-center text-white text-center overflow-hidden">
+
+<!-- Background -->
+<div class="absolute inset-0 bg-cover bg-center" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); 
+             filter: brightness(0.6);">
+</div>
+
+<!-- Ornamen Lampion (paling atas) -->
+<div class="flex justify-center mb-20" data-aos="fade-down" data-aos-duration="1000">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
+   
+<!-- Glassmorphism Card -->
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
+
+<section id="details" class="py-20 px-6">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="font-script text-5xl text-white mb-12" data-aos="fade-up">🗓️ Save The Date</h2>
+
+<div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+<!-- Akad Nikah Card -->
+<div class="w-full md:w-1/2 bg-white/20 backdrop-blur-lg p-8 rounded-xl shadow-lg" data-aos="zoom-in">
+<i data-lucide="gem" class="w-12 h-12 text-sky-600 mx-auto mb-4"></i>
+<h3 class="text-3xl font-semibold text-sky-800 mb-2">Akad Nikah</h3>
+<p class="text-lg text-white-800">Kamis, 04 September 2025</p>
+<p class="text-lg text-white-800">Pukul 08:00 WITA</p>
+<p class="mt-4 text-sky-750"><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2"></i>Jl. Poros Wamengkoli, Desa Nepa Mekar, Kec. Lakudo, Kab. Buton Tengah, Sulawesi Tenggara.</p>
+<a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Rama+%26+Rin&dates=20251010T020000Z/20251010T040000Z&details=Acara+pernikahan+Rama+dan+Rin&location=Gedung+Pernikahan+Impian,+Jakarta" target="_blank" class="mt-6 inline-block bg-sky-800 text-white rounded-full px-6 py-2 text-sm hover:bg-sky-900 transition-colors">
+🔔 Ingatkan Saya
+</a>
+</div>
+
+<!-- Resepsi Card -->
+<div class="w-full md:w-1/2 bg-white/20 backdrop-blur-lg p-8 rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+   <i data-lucide="glass-water" class="w-12 h-12 text-sky-600 mx-auto mb-4"></i>
+         <h3 class="text-3xl font-semibold text-sky-800 mb-2">Resepsi</h3>
+         <p class="text-lg text-white-800">Kamis, 04 September 2025</p>
+         <p class="text-lg text-white-800">Pukul 12:30 WITA - Selesai</p>
+         <p class="mt-4 text-sky-750"><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2"></i>Jl. Poros Wamengkoli, Desa Nepa Mekar, Kec. Lakudo, Kab. Buton Tengah, Sulawesi Tenggara.</p>
+      <a href="#" class="mt-6 inline-block bg-sky-800 text-white py-2 px-6 rounded-full hover:bg-sky-900 transition">📍 Buka di Maps</a>
+      </div>
+   </div>
+</div>
+</section>
+</div>
+</section>
+
+<!-- Script AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+
+<!-- 5. Halaman Cerita Perjalanan Cinta -->
+<section id="story" class="py-20 px-8 relative overflow-hidden">
+<!-- Ornamen Lampion (paling atas) -->
+<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
+<!-- Background -->
+<div class="absolute inset-0 bg-cover -z-10" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg1.png'); 
+                             filter: brightness(0.6);">
+</div>
+<!-- Glassmorphism Card -->
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
+<!-- Judul -->
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-great-vibes text-6xl text-white mb-12" data-aos="fade-up">Our Love Story</h2>
+</div>
+<div class="relative max-w-2xl mx-auto">
+<!-- Timeline line -->
+<div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-300"></div>
+
+<!-- Timeline Item 1 -->
+<div class="relative mb-12" data-aos="fade-up">
+<div class="flex items-center" data-aos-target=".timeline-img-1">
+<div class="w-1/2 pr-8 text-right">
+<h3 class="font-semibold text-lg text-blue-900">First Meet</h3>
+<p class="font-semibold text-lg text-blue-800">2018</p>
+<p class="text-white/80 mt-1">We never imagined that a simple connection would bring us this far to the moment where we choose to walk together, forever. Our story began on Facebook back when he was in middle school, and I was in high school. Even at that young age, he made a quiet but sincere commitment to me.</p>
+</div>
+<div class="w-1/2 pl-8">
+      <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item1.png" alt="First Meet" class="timeline-img-1 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+</div>
+</div>
+</div>
+
+<!-- Timeline Item 2 -->
+<div class="relative mb-12" data-aos="fade-up">
+<div class="flex items-center flex-row-reverse" data-aos-target=".timeline-img-2">
+<div class="w-1/2 pl-8 text-left">
+<h3 class="font-semibold text-lg text-blue-900">Engagement</h3>
+<p class="font-semibold text-lg text-blue-800">24–27 August 2025</p>
+<p class="text-white/80 mt-1">Time passed, and life took us in different directions. On August 24th, 2025, he returned not just with words, but with the courage to fulfill the promise he made years ago. On August 27th, we officially got engaged, surrounded by those we love</p>
+</div>
+<div class="w-1/2 pr-8">
+   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/lamaran.png" alt="Dating" class="timeline-img-2 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+</div>
+</div>
+</div>
+
+<!-- Timeline Item 3 -->
+<div class="relative mb-12" data-aos="fade-up">
+<div class="flex items-center" data-aos-target=".timeline-img-3">
+<div class="w-1/2 pr-8 text-right">
+<h3 class="font-semibold text-lg text-blue-700">Wedding Vows & A New Beginning</h3>
+<p class="font-semibold text-lg text-blue-800">4 September 2025</p>
+<p class="text-white/80 mt-1">And now, we look forward to beginning our new chapter as husband and wife on September 4th, 2025, the day of our akad. This journey filled with time, distance, and unshaken intention has shaped our story. And now, we’re ready to write the rest of it, together.</p>
+</div>
+<div class="w-1/2 pl-8">
+   <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/item3.png" alt="Proposal" class="timeline-img-3 w-full rounded-lg shadow-lg transition-all duration-500 filter grayscale hover:grayscale-0">
+</div>
+</div>
+</div>
+</div>
+<!-- Harapan -->
+<div class="max-w-md mx-auto text-center mt-8" data-aos="zoom-in-up" data-aos-delay="300">
+<div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+<p class="italic text-sm"><strong>Harapan Pengantin Pria:</strong> Semoga dia menjadi istri dunia dan akhirat.</p>
+<p class="italic text-sm mt-2"><strong>Harapan Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik.</p>
+</div>
+</div>
+</section>
+
+<!-- Wedding Gift Section -->
+<section id="story" class="py-20 px-8 relative overflow-hidden">
+<!-- Background -->
+<div class="absolute inset-0 bg-cover -z-10" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg3.png'); 
+                             filter: brightness(0.6);">
+</div>
+
+<!-- Ornamen Lampion (paling atas) -->
+<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
+
+<!-- Glassmorphism Card -->
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
+<!--<section id="gift" class="py-20 px-6 bg-white"> -->
+   
+<div class="max-w-4xl mx-auto text-center">
+<div data-aos="fade-up">
+<i data-lucide="gift" class="w-16 h-16 text-sky-600 mx-auto mb-6"></i>
+<h2 class="font-script text-5xl text-white mb-4">Wedding Gift</h2>
+<p class="text-white/80 leading-relaxed mb-8">
+Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
+</p>
+   
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  <!-- Bank Muamalat -->
+  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" 
+         alt="Bank Muamalat" 
+         class="h-16 object-contain mx-auto mb-4">
+    <div>
+      <p id="rekening-muamalat" class="text-2xl font-bold text-gray-800 my-2">8010117178</p>
+      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
+    </div>
+    <button onclick="copyToClipboard('rekening-muamalat', this)" 
+            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+      <span class="btn-text">Salin No. Rekening</span>
     </button>
   </div>
 
-  <!-- Hero Section -->
-  <section id="hero" class="section-bg bg-hero relative flex flex-col items-center justify-center text-white text-center">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 max-w-3xl w-full mx-auto space-y-6" data-aos="fade-up">
-      <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/kaligrafi.png" alt="Kaligrafi" class="mx-auto w-32 md:w-48">
-      <div class="relative w-40 h-40 md:w-56 md:h-56 mx-auto rounded-xl overflow-hidden shadow-lg border-4 border-white/40">
-        <img src="https://lh3.googleusercontent.com/d/1ijcZoamdBSD15PxWu4TFr3k8ELO_Zfps" alt="Foto Mempelai" class="w-full h-full object-cover">
-      </div>
-      <h1 class="font-script text-3xl md:text-4xl">Rama & Miftah</h1>
-      <p class="text-sm md:text-base">Akan melangsungkan Akad & Walimatul 'Urs</p>
-      <p class="italic text-gray-200">InsyaAllah</p>
-
-      <!-- Countdown -->
-      <div class="mt-6">
-        <p class="mb-2 text-sm md:text-base">Acara akan dimulai dalam</p>
-        <div id="countdown" class="grid grid-cols-4 gap-4 md:gap-8 text-center">
-          <div><span id="hero-days" class="block text-3xl md:text-5xl font-bold">00</span><span>Hari</span></div>
-          <div><span id="hero-hours" class="block text-3xl md:text-5xl font-bold">00</span><span>Jam</span></div>
-          <div><span id="hero-minutes" class="block text-3xl md:text-5xl font-bold">00</span><span>Menit</span></div>
-          <div><span id="hero-seconds" class="block text-3xl md:text-5xl font-bold">00</span><span>Detik</span></div>
-        </div>
-      </div>
+  <!-- Bank BRI -->
+  <div class="bg-white/20 backdrop-blur-lg p-6 rounded-xl shadow-lg flex flex-col justify-between h-full text-center">
+    <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" 
+         alt="Bank BRI" 
+         class="h-16 object-contain mx-auto mb-4">
+    <div>
+      <p id="rekening-bri" class="text-2xl font-bold text-gray-800 my-2">504201016983530</p>
+      <p class="text-md text-gray-700">a/n MIFTAH KHAIRANI</p>
     </div>
-  </section>
+    <button onclick="copyToClipboard('rekening-bri', this)" 
+            class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
+      <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+      <span class="btn-text">Salin No. Rekening</span>
+    </button>
+  </div>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- Details Section -->
-  <section id="details" class="section-bg bg-details relative py-20 px-6 text-center text-white">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-      <h2 class="font-script text-4xl">Detail Acara</h2>
-      <p>Kamis, 04 September 2025</p>
-      <p>Lokasi: Gedung Serbaguna</p>
-    </div>
-  </section>
+<!-- Guestbook Section -->
+<section id="guestbook" class="relative py-20 px-6 bg-transparent">
 
-  <!-- Story Section -->
-  <section id="story" class="section-bg bg-story relative py-20 px-6 text-center text-white">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-      <h2 class="font-script text-4xl">Our Story</h2>
-      <p>Perjalanan kisah cinta Rama & Miftah hingga hari bahagia ini.</p>
-    </div>
-  </section>
+<!-- Background -->
+<div class="absolute inset-0 bg-cover -z-10" 
+style="background-image: url('https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg2.png'); 
+                             filter: brightness(0.6);">
+</div>
 
-  <!-- Gift Section -->
-  <section id="gift" class="section-bg bg-gift relative py-20 px-6 text-center text-white">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-      <h2 class="font-script text-4xl">Wedding Gift</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Bank Muamalat -->
-        <div class="bg-white/10 backdrop-blur-xl rounded-lg p-6">
-          <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BM.png" class="w-24 mx-auto">
-          <p id="rekening-muamalat" class="text-2xl font-bold my-2">8010117178</p>
-          <p>a/n MIFTAH KHAIRANI</p>
-          <button onclick="copyToClipboard('rekening-muamalat', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
-            <i data-lucide="copy" class="w-4 h-4 mr-2"></i> <span class="btn-text">Salin No. Rekening</span>
-          </button>
-        </div>
-        <!-- BRI -->
-        <div class="bg-white/10 backdrop-blur-xl rounded-lg p-6">
-          <img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/BRI.png" class="w-24 mx-auto">
-          <p id="rekening-bri" class="text-2xl font-bold my-2">504201016983530</p>
-          <p>a/n MIFTAH KHAIRANI</p>
-          <button onclick="copyToClipboard('rekening-bri', this)" class="mt-4 btn-custom px-5 py-2 rounded-lg flex items-center mx-auto text-sm">
-            <i data-lucide="copy" class="w-4 h-4 mr-2"></i> <span class="btn-text">Salin No. Rekening</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Ornamen Lampion (paling atas) -->
+<div class="flex justify-center mb-6" data-aos="fade-down" data-aos-duration="1000">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-150">
+<img src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/ornamen.png" 
+alt="lampion" class="w-12 h-12 lantern delay-300">
+</div>
 
-  <!-- Guestbook Section -->
-  <section id="guestbook" class="section-bg bg-guestbook relative py-20 px-6">
-    <div class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10 max-w-4xl mx-auto space-y-6 bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-12" data-aos="fade-up">
-      <h2 class="font-script text-4xl text-center text-white">Buku Tamu</h2>
-      <form id="guestbookForm" class="space-y-4">
-        <input type="text" id="nama" name="nama" placeholder="Nama" class="w-full px-4 py-2 rounded-lg text-black" required>
-        <textarea id="ucapan" name="ucapan" rows="4" placeholder="Ucapan" class="w-full px-4 py-2 rounded-lg text-black" required></textarea>
-        <button type="submit" class="w-full btn-custom px-6 py-3 rounded-lg">Kirim Ucapan</button>
-      </form>
-      <div id="ucapanList" class="mt-6 space-y-4"></div>
-    </div>
-  </section>
+<div class="relative z-10 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full mx-auto mx-auto space-y-6" data-aos="fade-up">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-12" data-aos="fade-up">
+<h2 class="font-script text-5xl text-white mb-4">📝Guest Book</h2>
+<p class="text-white/80">Berikan ucapan dan doa restu terbaik Anda untuk kedua mempelai</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up">
+<form id="guestbookForm">
+<div class="mb-4">
+<label for="nama" class="block text-gray-700 mb-2">Nama</label>
+<input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 ring-sky-600" required>
+</div>
+<div class="mb-4">
+<label for="ucapan" class="block text-gray-700 mb-2">Ucapan</label>
+<textarea id="ucapan" name="ucapan" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 ring-sky-600" required></textarea>
+</div>
+<button type="submit" class="w-full btn-custom px-6 py-3 rounded-lg">Kirim Ucapan</button>
+</form>
+</div>
+<div id="ucapanList" class="mt-12 space-y-6">
+<!-- Ucapan akan ditampilkan di sini -->
+</div>
+</div>
+</section>
 
-  <!-- Audio -->
-  <audio id="backgroundMusic" loop>
-    <source src="https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/bg.mp3" type="audio/mp3">
-  </audio>
+<!-- Footer -->
+<footer class="py-12 bg-sky-800 text-white text-center">
+<p>Terima kasih atas doa restu Anda</p>
+<p class="font-script text-4xl my-4">Rama & Rin</p>
+<p class="text-sm text-sky-100">&copy; 2025. nisaDev.</p>
+</footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script> AOS.init({ once:true, duration:900 }); </script>
-  <script> lucide.createIcons(); </script>
-  <script src="scripts.js"></script>
+</main>
+
+<!-- PENAMBAHAN KODE UNTUK ANIMASI SAKURA -->
+<script>
+    // KODE YANG DIMODIFIKASI: Daftar gambar kelopak bunga
+    // Kita membuat sebuah array untuk menyimpan beberapa URL gambar yang berbeda.
+    const petalImages = [
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/sakura.png', // Gambar 1 (original)
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/peony.png.png', // Gambar 2 (Bunga putih)
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/rb.png' // Gambar 3 (Kelopak lain)
+    ];
+
+    // Fungsi ini membuat satu kelopak bunga sakura
+    function createSakuraPetal() {
+        const sakuraContainer = document.getElementById('sakura-container');
+        const petal = document.createElement('div');
+        petal.classList.add('sakura-petal');
+
+        // KODE YANG DIMODIFIKASI: Memilih gambar secara acak dari daftar
+        const randomImage = petalImages[Math.floor(Math.random() * petalImages.length)];
+        petal.style.backgroundImage = `url('${randomImage}')`;
+
+
+        // Mengatur properti acak untuk setiap kelopak
+        const size = Math.random() * 15 + 10; // Ukuran antara 10px dan 25px
+        const startPosition = Math.random() * window.innerWidth; // Posisi horizontal awal
+        const fallDuration = Math.random() * 5 + 7; // Durasi jatuh antara 7s dan 12s
+        const fallDelay = Math.random() * 5; // Penundaan sebelum jatuh
+        const windEffect = (Math.random() - 0.5) * 200; // Efek angin ke kiri atau kanan
+
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size}px`;
+        petal.style.left = `${startPosition}px`;
+        petal.style.animationDuration = `${fallDuration}s`;
+        petal.style.animationDelay = `${fallDelay}s`;
+        petal.style.setProperty('--wind-effect', `${windEffect}px`);
+
+        sakuraContainer.appendChild(petal);
+
+        // Hapus elemen setelah animasi selesai untuk menjaga performa
+        setTimeout(() => {
+            petal.remove();
+        }, (fallDuration + fallDelay) * 1000);
+    }
+
+    // Panggil fungsi untuk membuat kelopak baru secara berkala
+    // Angka 300 berarti membuat 1 kelopak baru setiap 300 milidetik
+    let sakuraInterval;
+
+    function startSakuraAnimation() {
+        if (!sakuraInterval) {
+            sakuraInterval = setInterval(createSakuraPetal, 300);
+        }
+    }
+    
+    // Panggil saat halaman dimuat
+    startSakuraAnimation();
+</script>
+<!-- AKHIR PENAMBAHAN KODE UNTUK ANIMASI SAKURA -->
+   
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+lucide.createIcons();
+
+// Fungsi Salin Rekening
+function copyToClipboard(elementId, buttonElement) {
+const textToCopy = document.getElementById(elementId).innerText;
+navigator.clipboard.writeText(textToCopy).then(() => {
+const btnText = buttonElement.querySelector('.btn-text');
+const originalText = btnText.innerText;
+btnText.innerText = 'Berhasil disalin!';
+setTimeout(() => {
+btnText.innerText = originalText;
+}, 2000);
+}).catch(err => {
+console.error('Gagal menyalin: ', err);
+});
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+const playButton = document.getElementById('playButton');
+const audio = document.getElementById('backgroundMusic');
+let isSakuraStarted = false; // Flag untuk memastikan animasi hanya dimulai sekali
+
+playButton.addEventListener('click', () => {
+audio.play().catch(e => console.log("Autoplay dicegah."));
+
+const playOverlay = document.getElementById('playOverlay');
+playOverlay.classList.add('hidden');
+document.body.style.overflow = 'auto';
+playOverlay.addEventListener('transitionend', () => playOverlay.remove(), { once: true });
+});
+
+// Event listener untuk memulai animasi saat scroll
+window.addEventListener('scroll', () => {
+// Mulai animasi hanya jika belum dimulai dan overlay sudah hilang
+if (!isSakuraStarted && !document.getElementById('playOverlay')) {
+startSakuraAnimation();
+isSakuraStarted = true; // Set flag agar tidak berjalan lagi
+}
+}, { once: true }); // Opsi {once: true} membuat listener ini hanya berjalan sekali
+
+function createSakura() {
+const container = document.getElementById('sakura-container');
+if (!container) return;
+const sakuraPetal = document.createElement('div');
+sakuraPetal.className = 'sakura-petal';
+
+const size = Math.random() * 20 + 10;
+const position = Math.random() * 100;
+const duration = Math.random() * 5 + 8;
+const delay = Math.random() * 5;
+const wind = (Math.random() - 0.5) * 200 + 'px';
+
+sakuraPetal.style.width = `${size}px`;
+sakuraPetal.style.height = `${size}px`;
+sakuraPetal.style.left = `${position}vw`;
+sakuraPetal.style.animationDuration = `${duration}s`;
+sakuraPetal.style.animationDelay = `${delay}s`;
+sakuraPetal.style.setProperty('--wind-effect', wind);
+
+container.appendChild(sakuraPetal);
+sakuraPetal.addEventListener('animationend', () => sakuraPetal.remove());
+}
+
+function startSakuraAnimation() {
+for (let i = 0; i < 30; i++) createSakura();
+setInterval(createSakura, 1000); 
+}
+
+// Countdown Timer
+const countdownDate = new Date("September 4, 2025 10:00:00").getTime();
+const countdownInterval = setInterval(() => {
+const distance = countdownDate - new Date().getTime();
+const countdownElement = document.getElementById("countdown");
+
+if (distance < 0) {
+clearInterval(countdownInterval);
+if (countdownElement) countdownElement.innerHTML = "<div class='text-2xl text-white'>ACARA TELAH DIMULAI</div>";
+return;
+}
+document.getElementById("hero-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+document.getElementById("hero-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+document.getElementById("hero-minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+document.getElementById("hero-seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+}, 1000);
+
+// Music Control
+const musicControl = document.getElementById('musicControl');
+musicControl.addEventListener('click', () => {
+const musicIcon = document.getElementById('musicIcon');
+if (audio.paused) {
+audio.play();
+musicIcon.classList.replace('fa-play', 'fa-pause');
+} else {
+audio.pause();
+musicIcon.classList.replace('fa-pause', 'fa-play');
+}
+});
+
+// Guestbook
+const guestbookForm = document.getElementById('guestbookForm');
+const ucapanList = document.getElementById('ucapanList');
+let wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [];
+
+function displayWishes() {
+ucapanList.innerHTML = '';
+wishes.forEach(item => {
+const wishElement = document.createElement('div');
+wishElement.className = 'bg-white p-6 rounded-lg shadow-md';
+wishElement.innerHTML = `
+                       <div class="flex items-start">
+                           <div class="flex-shrink-0">
+                               <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-sky-100">
+                                   <span class="font-medium text-sky-800">${item.name.charAt(0).toUpperCase()}</span>
+                               </span>
+                           </div>
+                           <div class="ml-4">
+                               <p class="font-semibold text-sky-800">${item.name}</p>
+                               <p class="text-gray-600 mt-1">${item.wish}</p>
+                           </div>
+                       </div>`;
+ucapanList.appendChild(wishElement);
+});
+}
+displayWishes();
+
+guestbookForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const newWish = { name: e.target.nama.value, wish: e.target.ucapan.value };
+wishes.unshift(newWish);
+localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+displayWishes();
+guestbookForm.reset();
+});
+});
+</script>
 </body>
 </html>
