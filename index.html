@@ -625,11 +625,24 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika membe
 
 <!-- PENAMBAHAN KODE UNTUK ANIMASI SAKURA -->
 <script>
+    // KODE YANG DIMODIFIKASI: Daftar gambar kelopak bunga
+    // Kita membuat sebuah array untuk menyimpan beberapa URL gambar yang berbeda.
+    const petalImages = [
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/sakura.png', // Gambar 1 (original)
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/peony.png.png', // Gambar 2 (Bunga putih)
+        'https://raw.githubusercontent.com/Haeratunnisa/wedding-site/main/audio/rb.png' // Gambar 3 (Kelopak lain)
+    ];
+
     // Fungsi ini membuat satu kelopak bunga sakura
     function createSakuraPetal() {
         const sakuraContainer = document.getElementById('sakura-container');
         const petal = document.createElement('div');
         petal.classList.add('sakura-petal');
+
+        // KODE YANG DIMODIFIKASI: Memilih gambar secara acak dari daftar
+        const randomImage = petalImages[Math.floor(Math.random() * petalImages.length)];
+        petal.style.backgroundImage = `url('${randomImage}')`;
+
 
         // Mengatur properti acak untuk setiap kelopak
         const size = Math.random() * 15 + 10; // Ukuran antara 10px dan 25px
